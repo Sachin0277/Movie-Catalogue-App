@@ -1,38 +1,160 @@
-.App {
-  text-align: center;
+:root {
+	margin: 0;
+	padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+	background: #141414;
+	color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+	font-size: 40px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+	animation: magical-heading 5s infinite alternate;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.movie-app > .row {
+	overflow-x: auto;
+	flex-wrap: nowrap;
 }
 
-.App-link {
-  color: #61dafb;
+.row::-webkit-scrollbar {
+	width: 0 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.image-container {
+	position: relative;
+	transition: transform 0.2s;
+}
+
+.image-container:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.image-container:hover .overlay {
+	opacity: 1;
+}
+
+.overlay {
+	position: absolute;
+	background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+	width: 100%;
+	transition: 0.5s ease;
+	opacity: 0;
+	bottom: 0;
+	font-size: 20px;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(5px);
+}
+
+/* Magical Background */
+body:before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(circle, #ebebeb 0%, #141414 100%);
+	z-index: -1;
+	pointer-events: none;
+	animation: magical-background 10s ease-in-out infinite;
+}
+
+@keyframes magical-background {
+	0% {
+		transform: scale(1);
+		background-position: 0% 50%;
+	}
+
+	50% {
+		transform: scale(1.1);
+		background-position: 100% 50%;
+	}
+
+	100% {
+		transform: scale(1);
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes magical-heading {
+	0% {
+		color: #ffeb3b;
+	}
+
+	50% {
+		color: #ff9800;
+	}
+
+	100% {
+		color: #e91e63;
+	}
+}
+
+/* Magical Search Box */
+.search-box {
+	position: relative;
+	margin-top: 20px;
+}
+
+.search-box input[type="text"] {
+	width: 300px;
+	padding: 10px;
+	border: none;
+	border-radius: 20px;
+	font-size: 16px;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+	background-color: transparent;
+	color: #ffffff;
+	outline: none;
+	transition: box-shadow 0.3s ease;
+}
+
+.search-box input[type="text"]:focus {
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.search-box button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	border: none;
+	background-color: transparent;
+	padding: 10px;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.search-box button:hover {
+	transform: rotate(360deg);
+}
+
+.search-box button:focus {
+	outline: none;
+}
+
+.search-box button img {
+	width: 20px;
+	height: 20px;
+}
+
+@keyframes magical-search-box {
+	0% {
+		color: #ffeb3b;
+	}
+
+	50% {
+		color: #ff9800;
+	}
+
+	100% {
+		color: #e91e63;
+	}
 }
