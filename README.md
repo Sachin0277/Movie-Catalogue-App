@@ -8,9 +8,8 @@
 * Visual Studio Code
 * Github
 
-## Available Scripts
 
-### Steps to start the app
+## Steps to start the app
 - clone the project
 - open vs code
 - change directory to the project folder
